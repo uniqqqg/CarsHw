@@ -12,5 +12,9 @@ struct Car: Identifiable, Hashable {
 	var imageUrl: String
 	var brand: String
 	var model: String
-	var year: Int
+	var year: String
+}
+
+extension Car {
+	static let mockEmpty: Car = .init(imageUrl: "", brand: "", model: "", year: "")
 }

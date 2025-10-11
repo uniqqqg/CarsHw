@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
+	
+	var body: some View {
 		TabView {
-			CarsListView()
-				.tag(0)
-				.tabItem {
-					Image(systemName: "car.fill")
-					Text("Гараж")
-				}
+			NavigationStack {
+				CarsListView()
+			}
+			.tag(0)
+			.tabItem {
+				Image(systemName: "car.fill")
+				Text("Гараж")
+			}
 		}
-    }
+	}
 }
 
 #Preview {
-	NavigationStack {
-		ContentView()
-	}
+	ContentView()
 }

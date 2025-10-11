@@ -11,10 +11,6 @@ import Kingfisher
 struct CarsListView: View {
 
 	@StateObject private var viewModel = CarsListViewModel()
-	
-	// TODO: - Сделать навигацию к детальному экрану, экрану редактирование, а также удаление машины из гаража
-	// TODO: - Для редактирования и удаления, посмотри про свайп-действия в list :)
-	// И да я тебе не запрещаю эксперементировать, главное разберись и повтори функционал предыдущего дз что мы с тобой делали на занятии.
 
 	var body: some View {
 		List {
@@ -25,6 +21,28 @@ struct CarsListView: View {
 			}
 		}
 		.navigationTitle("Мой Гараж")
+		.toolbar {
+			ToolbarItem(placement: .topBarTrailing) {
+				Button {
+					viewModel.presentAddSheet()
+				} label: {
+					Image(systemName: "plus")
+				}
+			}
+		}
+		.sheet(isPresented: $viewModel.showAddSheet) {
+			NavigationStack {
+				CarsEditView(
+					viewModel: .init(car: Car.mockEmpty),
+					action: { newCar in
+						viewModel.addCarToGarage(newCar: newCar)
+					}
+				)
+			}
+		}
+		.navigationDestination(item: $viewModel.selectedCar) { car in
+			CarsDetailView(viewModel: .init(car: car))
+		}
 	}
 
 	func carRow(car: Car) -> some View {
