@@ -66,7 +66,7 @@ struct CarsEditView: View {
 			Text("Марка")
 				.fontWeight(.semibold)
 			TextField("Введите марку машины", text: $viewModel.car.brand)
-				.textFieldStyle(.roundedBorder)
+			.textFieldStyle(.roundedBorder)
 		}
 	}
 	

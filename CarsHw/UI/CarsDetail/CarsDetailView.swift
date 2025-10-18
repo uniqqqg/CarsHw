@@ -29,7 +29,7 @@ struct CarsDetailView: View {
 		.toolbar {
 			ToolbarItem(placement: .topBarTrailing) {
 				Button {
-					viewModel.presentEditSheet = true
+					viewModel.showSheet()
 				} label: {
 					Image(systemName:"pencil")
 				}
@@ -43,10 +43,9 @@ struct CarsDetailView: View {
 						configuration: .editing
 					),
 					action: { editedCar in
-						withAnimation {
-							viewModel.car = editedCar
-						}
+						viewModel.car = editedCar
 					}
+					
 				)
 			}
 		}
