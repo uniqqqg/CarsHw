@@ -25,7 +25,7 @@ struct CarsEditView: View {
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 16) {
-				imageSection
+//				imageSection
 				brandSecton
 				modelSection
 				yearSection
@@ -42,24 +42,26 @@ struct CarsEditView: View {
 		
 	}
 	
-	private var imageSection: some View {
-		VStack(spacing: 24) {
-			KFImage(URL(string: viewModel.car.imageUrl))
-				.placeholder {
-					ProgressView()
-				}
-				.resizable()
-				.frame(width: .infinity, height: 250)
-				.clipShape(.rect(cornerRadius: 30))
-
-			Text("Cсылка на изображение")
-				.fontWeight(.semibold)
-
-			TextField("Введите ссылку на изображение: ", text: $viewModel.car.imageUrl)
-				.textFieldStyle(.roundedBorder)
-				.frame(maxWidth: .infinity, alignment: .leading)
-		}
-	}
+//	private var imageSection: some View {
+//		VStack(spacing: 24) {
+//			if let carImage = viewModel.car.imageUrl {
+//				KFImage(URL(string: carImage))
+//					.placeholder {
+//						ProgressView()
+//					}
+//					.resizable()
+//					.frame(width: .infinity, height: 250)
+//					.clipShape(.rect(cornerRadius: 30))
+//
+//			Text("Cсылка на изображение")
+//				.fontWeight(.semibold)
+//
+//			TextField("Введите ссылку на изображение: ", text: $viewModel.car.imageUrl)
+//				.textFieldStyle(.roundedBorder)
+//				.frame(maxWidth: .infinity, alignment: .leading)
+//			}
+//		}
+//	}
 	
 	private var brandSecton: some View {
 		VStack(alignment: .leading, spacing: 10) {

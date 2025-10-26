@@ -54,10 +54,12 @@ struct CarsDetailView: View {
 	private var imageSection: some View {
 		Section {
 			HStack(spacing: 16) {
-				KFImage(URL(string: viewModel.car.imageUrl))
-					.resizable()
-					.frame(width: 100, height: 100)
-					.clipShape(.rect(cornerRadius: 30))
+				if let carImage = viewModel.car.imageUrl {
+					KFImage(URL(string: carImage))
+						.resizable()
+						.frame(width: 100, height: 100)
+						.clipShape(.rect(cornerRadius: 30))
+				}
 				Text(viewModel.car.model)
 					.font(.largeTitle)
 			}
