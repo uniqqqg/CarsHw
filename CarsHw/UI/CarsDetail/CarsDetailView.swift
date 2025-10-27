@@ -97,7 +97,12 @@ struct CarsDetailView: View {
 					imageUrl: "https://avatars.mds.yandex.net/get-vertis-journal/3934100/2025-toyota-supra-a90-final-edition-europe_1.jpg_1733065612129/1600x1600",
 					brand: "Toyota",
 					model: "Supra",
-					year: "2025"
+					year: "2025",
+					horsepowerHp: "300",
+					cylinders: "6",
+					size: "4.4",
+					engineType: "Petrol",
+					transmission: "9-speed automatic"
 				)
 			)
 		)

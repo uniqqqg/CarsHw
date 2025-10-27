@@ -20,16 +20,16 @@ struct Engine: Identifiable, Hashable {
 	}
 }
 
-extension Engine {
-	static let mock: Engine = .init(year: "", model: "", engineType: "")
-	
-	init(from data: VehicleResponse.EngineData) {
-		self.year = data.year
-		self.model = data.model
-		self.engineType = data.engineType
-	}
-	
-	static func fromResponse(_ response: VehicleResponse) -> [Engine] {
-		response.engine.map { Engine(from: $0) }
-	}
-}
+//extension Engine {
+//	static let mock: Engine = .init(year: "", model: "", engineType: "")
+//	
+//	init(from data: VehicleResponse.EngineData) {
+//		self.year = data.year
+//		self.model = data.model
+//		self.engineType = data.engineType
+//	}
+//	
+//	static func fromResponse(_ response: VehicleResponse) -> [Engine] {
+//		response.engine.map { Engine(from: $0) }
+//	}
+//}

@@ -8,7 +8,7 @@
 import Foundation
 
 enum EngineEndpoint: Endpoint {
-	case models(parameter: VehicleRequestModel)
+	case models(model: VehicleRequestModel)
 
 	var path: String {
 		switch self {
@@ -30,8 +30,12 @@ enum EngineEndpoint: Endpoint {
 	
 	var parameters: (any Encodable)? {
 		switch self {
-		case let .models(parameter):
-			parameter
+		case let .models(model):
+			[
+				"year": model.year,
+				"model": model.model,
+				"engine_type": model.engineType
+			]
 		}
 	}
 }

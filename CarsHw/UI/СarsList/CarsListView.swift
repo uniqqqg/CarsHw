@@ -38,8 +38,8 @@ struct CarsListView: View {
 				CarsDetailView(viewModel: .init(car: car))
 			}
 			.task {
-				await viewModel.fetchCars()
-				await viewModel.fetchMotorcycles()
+//				await viewModel.fetchCars()
+//				await viewModel.fetchMotorcycles()
 				await viewModel.fetchEngines()
 			}
 	}

@@ -15,7 +15,6 @@ final class CarsListViewModel: ObservableObject {
 	@Published var showAddSheet: Bool = false
 	@Published var cars: [Car] = []
 	@Published var error: Error? = nil
-	@Published var engines: [Engine] = []
 	
 	private let carsService: CarsServiceProtocol
 	private let motorcyclesService: MotorcyclesServiceProtocol
@@ -36,6 +35,7 @@ final class CarsListViewModel: ObservableObject {
 		switch result {
 		case .success(let response):
 			cars = Car.fromResponse(response)
+			print("🚗 Cars: \(cars)")
 		case .serverError(let err):
 			self.error = err
 		case .authError(let err):
@@ -46,10 +46,14 @@ final class CarsListViewModel: ObservableObject {
 	}
 	
 	func fetchEngines() async {
-		let result = await engineService.fetchModel(parameters: VehicleRequestModel(year: "2018", model: "model",engineType:"engine_type"))
+
+		let requestModel: VehicleRequestModel = .init(year: "2017", model: "NSX", engineType: "hybrid")
+		let result = await engineService.fetchModel(requestModel: requestModel)
+		print(result)
 		switch result {
 		case .success(let response):
-			engines = Engine.fromResponse(response)
+			cars = Car.fromEngineResponse(response)
+			print("👷 Engines \(cars)")
 		case .serverError(let err):
 			self.error = err
 		case .authError(let err):
@@ -57,10 +61,12 @@ final class CarsListViewModel: ObservableObject {
 		case .networkError(let message):
 			self.error = NSError(domain: "NetworkError", code: -1, userInfo: [NSLocalizedDescriptionKey: message])
 		}
+
 	}
 	
 	func fetchMotorcycles() async {
 		let result = await motorcyclesService.fetchModels(limit: 10, type: "street_motorcycle", make: "Yamaha")
+		print("🏍️ Motorcycles: \(result)")
 		switch result {
 		case .success(let response):
 			cars.append(contentsOf: Car.fromResponse(response))

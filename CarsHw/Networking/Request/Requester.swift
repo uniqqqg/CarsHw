@@ -29,7 +29,6 @@ class Requester {
 			print("🪛 Получен Http статус код: \(httpResponse.statusCode)")
 			
 			let decoder = JSONDecoder()
-			decoder.keyDecodingStrategy = .convertFromSnakeCase
 			return handleResponse(httpResponse, data: data, responseModel: responseModel, decoder: decoder)
 		} catch {
 			print("Network request failed: \(error.localizedDescription)")

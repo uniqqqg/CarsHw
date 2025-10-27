@@ -8,12 +8,12 @@
 import Foundation
 
 protocol EngineServiceProtocol {
-	func fetchModel( parameters: VehicleRequestModel) async -> Result<VehicleResponse>
+	func fetchModel(requestModel: VehicleRequestModel) async -> Result<EnginesResponse>
 }
 	
 	class EngineService: Requester, EngineServiceProtocol {
-		func fetchModel( parameters: VehicleRequestModel) async -> Result<VehicleResponse> {
-			return await sendRequest(endpoint: EngineEndpoint.models(parameter: parameters), responseModel: VehicleResponse.self)
+		func fetchModel(requestModel: VehicleRequestModel) async -> Result<EnginesResponse> {
+			return await sendRequest(endpoint: EngineEndpoint.models(model: requestModel), responseModel: EnginesResponse.self)
 		
 		}
 	}

@@ -110,7 +110,19 @@ struct CarsEditView: View {
 #Preview {
 	NavigationStack {
 		CarsEditView(
-			viewModel: .init(car: Car(imageUrl: "https://media.istockphoto.com/id/1435226078/ru/фото/передняя-часть-белого-bmw-m4-припаркована-на-улице-с-деревьями-на-заднем-плане.jpg?s=612x612&w=0&k=20&c=-TR3ivG5MeDtb97fjyNZGWhNF7TAfeUV_FkPDF2bbIk=", brand: "", model: "", year: "1"),),
+			viewModel: .init(
+				car: Car(
+					imageUrl: "https://media.istockphoto.com/id/1435226078/ru/фото/передняя-часть-белого-bmw-m4-припаркована-на-улице-с-деревьями-на-заднем-плане.jpg?s=612x612&w=0&k=20&c=-TR3ivG5MeDtb97fjyNZGWhNF7TAfeUV_FkPDF2bbIk=",
+					brand: "",
+					model: "",
+					year: "1",
+					horsepowerHp: "250",
+					cylinders: "6",
+					size: "4.4",
+					engineType: "Petrol",
+					transmission: "8-speed automatic"
+				),
+			),
 			action: { _ in
 			})//change
 	}
